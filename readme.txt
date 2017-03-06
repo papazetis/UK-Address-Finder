@@ -36,6 +36,9 @@ No, it is not necessary. GetAddress.io offers a free plan with 20 free API Calls
 2. /assets/screenshot-2.jpg
 
 == Changelog ==
+= 1.5.1 =
+* Fix some bugs
+* Fix bug in PHP 5.4
 
 = 1.5 =
 * Added Google Map

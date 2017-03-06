@@ -23,7 +23,7 @@ add_action( 'wp_ajax_nopriv_ajax_gmap', 'ajax_gmap' ); // ajax for not logged in
 // Ajax function for display addresses
 function ajax_postcode() {
   check_ajax_referer( 'uaf_nonce', 'security' );
-  $uaf_api_key = !empty(get_option( 'uaf_settings' )) ? get_option( 'uaf_settings' ) : '';
+  $uaf_api_key = get_option( 'uaf_settings', '' );
   if (isset( $_POST['uaf_postcode'] ) ) {
     $uaf_postcode = wp_unslash( $_POST['uaf_postcode'] ); //
     $response = wp_remote_get( esc_url_raw( 'https://api.getAddress.io/v2/uk/' . $uaf_postcode . '?api-key=' . $uaf_api_key['uaf_API_key'] ) );

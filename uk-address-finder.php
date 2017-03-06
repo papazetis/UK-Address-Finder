@@ -2,7 +2,7 @@
 /**
 Plugin Name: UK Address Finder
 Description: UK Address Finder from postcode with GetAddress.io API
-Version:     1.5
+Version:     1.5.1
 Author:      Nick Papazetis
 Author URI:  http://www.papazetis.com
 License:     GPL2

@@ -32,7 +32,8 @@ function uaf_settings_init(  ) {
 }
 
 function uaf_API_key_render() {
-  $uaf_api_key = !empty(get_option( 'uaf_settings' )['uaf_API_key']) ? get_option( 'uaf_settings' )['uaf_API_key'] : '';
+  $options = get_option ( 'uaf_settings', '' );
+  $uaf_api_key = (is_array($options)) ? $options['uaf_API_key'] : '';
   $response = wp_remote_get( esc_url_raw( 'https://api.getAddress.io/usage/?api-key=' . $uaf_api_key ) );
 	$response_code = wp_remote_retrieve_response_code( $response );
 	$api_message = json_decode( wp_remote_retrieve_body( $response ), true );
@@ -41,7 +42,7 @@ function uaf_API_key_render() {
 	$dailyrequestlimit2 = isset( $api_message['DailyRequestLimit2'] ) ? $api_message['DailyRequestLimit2'] : '';
 	$requests_after_limit = $dailyrequestlimit2 - $dailyrequestlimit1;
   ?>
-  <input type='text' name='uaf_settings[uaf_API_key]' value='<?php echo isset( $uaf_api_key ) ?  esc_attr( $uaf_api_key )  : ''; ?>' size='50'><br><hr width="340px" align="left">
+  <input type='text' name='uaf_settings[uaf_API_key]' value='<?php echo esc_attr( $uaf_api_key ); ?>' size='50'><br><hr width="340px" align="left">
   <?php
   echo '<strong>Daily Requests: </strong>' . esc_attr( $dailyrequestqount ) . '<br>';
 	echo '<strong>Daily Requests Limit: </strong>' . esc_attr( $dailyrequestlimit1 ) . '<br>';
